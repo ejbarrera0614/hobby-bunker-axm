@@ -6,16 +6,23 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'standard-with-typescript',
-    'prettier'
+    'prettier',
+    'plugin:react/jsx-runtime',
+    'plugin:tailwindcss/recommended'
   ],
   overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.js'],
+      parser: '@typescript-eslint/parser',
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react',
+    'tailwindcss'
   ],
   rules: {
   }
