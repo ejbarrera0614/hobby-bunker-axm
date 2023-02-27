@@ -9,7 +9,7 @@ interface Link {
 const LiDiceLink = ({ path, label }: Link) => (
     <li className='hover:text-hover w-full bg-sky-500 text-ellipsis h-7'>
         <NavLink to={path} className={({ isActive }) =>
-            `grid grid-cols-link  nav-link ${isActive ? 'active' : ''}`
+            `grid grid-cols-link h-full nav-link ${isActive ? 'active' : ''}`
         }>
             <span className='col-start-1 hidden'><DiceSixFaces /></span>
             <h5 className='col-start-2 m-auto'>{label}</h5>

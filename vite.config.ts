@@ -8,6 +8,6 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') }, 
-      { find: '@ui', replacement: path.resolve(__dirname, 'src/my-lab-ui') }]
+      { find: '@ui', replacement: path.resolve(__dirname, 'src/hobby-bunker-ui') }]
   }
 })
