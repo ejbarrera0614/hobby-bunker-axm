@@ -13,6 +13,7 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "types": ["vite/client", "react", "react-dom", "node"],
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
@@ -21,6 +22,6 @@
       "@ui/*": ["./src/hobby-bunker-ui/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

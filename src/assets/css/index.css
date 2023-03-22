@@ -38,10 +38,11 @@ body {
   h3 {
     @apply text-2xl leading-7;
   }
+   
+  .nav-link:hover span{
+    visibility: visible;
+    margin: auto;
+  }
 }
 
-.active span, .nav-link:hover span{
-  display: inline-block !important;
-  margin: auto;
-}
 

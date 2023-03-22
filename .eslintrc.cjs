@@ -5,25 +5,21 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'standard-with-typescript',
-    'prettier',
-    'plugin:react/jsx-runtime',
-    'plugin:tailwindcss/recommended'
+    'standard-with-typescript'
   ],
+  include: ['vite.config.ts'],
   overrides: [
-    {
-      files: ['*.ts', '*.tsx', '*.js'],
-      parser: '@typescript-eslint/parser',
-    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    project: './tsconfig.json'
+
   },
   plugins: [
-    'react',
-    'tailwindcss'
+    'react'
   ],
   rules: {
+    'react/react-in-jsx-scope': 'off'
   }
 }

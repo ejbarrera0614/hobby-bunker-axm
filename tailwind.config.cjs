@@ -1,18 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 const sharedColors = {
-  hover: '#a22c1a'
+  hover: '#a22c1a',
+  transparent: 'transparent'
+
 }
 module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./src/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './src/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
       colors: {
         ...sharedColors
-      },
+      }
     },
     colors: {
       primary: '#f9bc8d', /* #e46d43, */
@@ -23,5 +25,5 @@ module.exports = {
       link: 'minmax(10px, 40px) auto minmax(10px, 40px)'
     }
   },
-  plugins: [],
+  plugins: []
 }
