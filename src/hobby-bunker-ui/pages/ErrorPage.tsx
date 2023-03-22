@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '@/constants/menu';
 
-function ErrorPage() {
+export function ErrorPage() {
   return (
     <div className='w-full h-full flex items-center justify-center flex-col'>
         ErrorPage
@@ -9,5 +9,3 @@ function ErrorPage() {
     </div>
   )
 }
-
-export default ErrorPage

@@ -1,7 +1,7 @@
 import { Card } from '@ui/components/Card-lx'
 import { useEffect } from 'react'
 
-function HomePage (): JSX.Element {
+export function HomePage (): JSX.Element {
  
   return (
         <>
@@ -9,5 +9,3 @@ function HomePage (): JSX.Element {
         </>
   )
 }
-
-export default HomePage

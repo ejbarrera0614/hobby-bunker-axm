@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import Menu from '@ui/components/Menu'
-import Header from '@ui/components/Header'
-function RootLayout (): JSX.Element {
+import {MenuContainer} from '@ui/components/Menu'
+import {Header} from '@ui/components/Header'
+export function RootLayout (): JSX.Element {
   useEffect(() => {
     document.title = 'Home Page'
   }, [])
@@ -12,9 +12,13 @@ function RootLayout (): JSX.Element {
             <main className='flex h-full ' >
                 <section className='w-3/12 border-r-2 pr-9 border-stone-200 border-collapse'>
                     <Header />
-                    <Menu />
+                    <MenuContainer />
                 </section>
                 <section className='w-9/12 px-9'>
+                  <div className='p-4 border-b-2 mb-4'>
+                    bienvenido usuario
+                    <button className='bg-transparent border-2 rounded p-2  hover:border-hover hover:text-hover ml-4'>iniciar sesion</button>
+                  </div>
                     <Outlet />
                 </section>
                 <footer></footer>
@@ -22,5 +26,3 @@ function RootLayout (): JSX.Element {
         </>
   )
 }
-
-export default RootLayout

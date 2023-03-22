@@ -1,36 +1,15 @@
+import { IInput } from '@/interface/IInputs';
 import { forwardRef } from 'react'
-import { UseFormReturn, FieldError } from 'react-hook-form';
+import { LabelInputContainer } from '@ui/components/LabelInputContainer'
+import { ErrorMessageInput } from './ErrorMessageInput';
 
-interface IInput {
-    name: string
-    label: string
-    error: FieldError | undefined
-    [key: string]: unknown
-}
 
-interface InputProps {
-    name: string;
-    label?: string;
-    error: FieldError | undefined;
-    register: UseFormReturn['register'];
-    rules?: Record<string, unknown>;
-    type?: string;
-    className?: string;
-    placeholder?: string;
-}
-const InputText = forwardRef<HTMLInputElement, IInput>(function InputText ({name, label, error, ...props }, ref): JSX.Element {
-    const hasError = Boolean(error);
+export const InputText = forwardRef<HTMLInputElement, IInput>(function InputText ({name, label, error, placeholder, ...props }: IInput, ref): JSX.Element {
   return (
-  <label className='flex flex-col gap-2'>
-    {label}
-    <input  className="p-2 rounded border-2 focus:outline-none  focus:border-primary" {...props} ref={ref} name={name}/>
-    {hasError && (
-          <span role="alert" className="input-error">
-            {error?.message}
-          </span>
-        )}
-  </label>
+  <LabelInputContainer label={label}>
+    <input {...props} ref={ref} name={name} placeholder={placeholder} 
+    className="p-2 rounded border-2 focus:outline-none  focus:border-primary w-full"/>
+    <ErrorMessageInput error={error?.message} />
+  </LabelInputContainer>
   )
 })
-
-export default InputText

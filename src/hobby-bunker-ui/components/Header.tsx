@@ -1,6 +1,6 @@
 import logo from '@/assets/img/logo.jpg'
 
-function Header (): JSX.Element {
+export function Header (): JSX.Element {
   return (
         <header className='flex flex-col place-content-center'>
             <img src={logo} alt="Page logo" className='max-w-xs w-full h-auto rounded-full' />
@@ -10,4 +10,3 @@ function Header (): JSX.Element {
   )
 }
 
-export default Header

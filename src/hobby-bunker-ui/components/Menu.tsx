@@ -28,27 +28,27 @@ const LinksContainer = ({ path, label, subMenu }: LinksWithSubMenu): JSX.Element
   const { pathname } = useLocation()
   const isLinsContainerActive: boolean = ((subMenu?.some(options => options.path === pathname)) ?? false) || pathname === path
   const linkClassName = `h-fit w-full text-ellipsis rounded ${isLinsContainerActive ? 'active bg-primary' : 'hover:bg-primary'}`
-  const subMenuClassName = 'm-auto flex flex-col items-center rounded-b'
+  const subMenuClassName = 'border-t-2 m-auto flex flex-col items-center rounded-b'
 
   return (
     <li className={`${linkClassName}`}>
         <LinkWithDicesIcons path={path} label={label} showDices={pathname === path} />
-            {(subMenu != null && isLinsContainerActive)
-              ? <ul className={`border-t-2 ${subMenuClassName}`}>
-                    {Object.values(subMenu).map(item =>
-                        <li key={`sub-menu-${path}-${item.path}`} className='w-full'>
-                            <LinkWithDicesIcons path={item.path} label={item.label} showDices={pathname === item.path} />
-                        </li>)}
-                </ul>
-              : <></>}
+        {(subMenu != null && isLinsContainerActive)
+          ? <ul className={`${subMenuClassName}`}>
+                {Object.values(subMenu).map(item =>
+                    <li key={`sub-menu-${path}-${item.path}`} className='w-full'>
+                        <LinkWithDicesIcons path={item.path} label={t(item.label)} showDices={pathname === item.path} />
+                    </li>)}
+            </ul>
+          : <></>}
     </li>
   )
 }
 
-export default function MenuContainer (): JSX.Element {
+export function MenuContainer (): JSX.Element {
   const subMenu: Link[] = [{
     path: '/quest/add',
-    label: 'Agregar Misión'
+    label: 'addQuest'
   }, {
     path: '/quest/add2',
     label: 'Sub Menu2'

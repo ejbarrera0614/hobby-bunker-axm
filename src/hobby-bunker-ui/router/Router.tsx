@@ -3,12 +3,12 @@ import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom'
-import RootLayout from '@ui/layouts/RootLayout'
-import HomePage from '@ui/pages/HomePage'
-import QuestPage from '@/hobby-bunker-ui/pages/Quest/QuestPage'
-import QuestAddPage from '@ui/pages/Quest/QuestAddPage'
+import {RootLayout} from '@ui/layouts/RootLayout'
+import {HomePage} from '@ui/pages/HomePage'
+import {QuestPage} from '@/hobby-bunker-ui/pages/Quest/QuestPage'
+import { QuestAddPage } from '@ui/pages/Quest/QuestAddPage'
 import { ROUTES } from '@/constants/menu'
-import ErrorPage from '@ui/pages/ErrorPage';
+import {ErrorPage} from '@ui/pages/ErrorPage';
 function Router (): JSX.Element {
   const router = createBrowserRouter([
     {

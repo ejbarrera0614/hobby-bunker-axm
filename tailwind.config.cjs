@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 const sharedColors = {
   hover: '#a22c1a',
-  transparent: 'transparent'
+  transparent: 'transparent',
+  white: 'white'
 
 }
 module.exports = {

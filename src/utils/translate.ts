@@ -10,8 +10,13 @@ const translations: Record< string, Record<string, string> > = {
     questFilterBy: 'Filtrar misiones por:',
     selectAGame: 'Selecciona un juego',
     name: 'Nombre:',
-    minLength: 'La cantidad de caracteres minima son %minLength%',
+    minLength: 'La cantidad de caracteres mínima son %minLength%',
+    maxLength: 'La cantidad de caracteres máxima son %maxLength%',
     required: 'Este campo es requerido',
+    send: 'Enviar',
+    description: 'Descripción',
+    phDescriptionNewEvent: 'Describe el evento aquí...',
+    phNameNewEvent: 'Ingresa el nombre del evento aquí...'
   }
 }
 interface Props {

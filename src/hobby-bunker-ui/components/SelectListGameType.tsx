@@ -1,0 +1,26 @@
+import { LabelInputContainer } from '@ui/components/LabelInputContainer'
+import { useGetData } from '@/hooks/useTestFirebase'
+import { ISelectGameType } from '@/interface/IInputs'
+import { t } from '@/utils/translate'
+import {  forwardRef  } from 'react'
+import { ErrorMessageInput } from './ErrorMessageInput'
+
+export const SelectListGameType = forwardRef<HTMLSelectElement, ISelectGameType>(function SelectListGameType({name, label, className, error, onChange}, ref){
+    const { data, isLoading } = useGetData()
+
+  return (
+    <LabelInputContainer label={label ?? ''}>
+      <select name={name} defaultValue='' ref={ref} onChange={onChange} className={` ${className} bg-transparent  rounded border-2 w-full max-w-xs p-2 focus:outline-none cursor-pointer `} >
+        <option disabled value={''}  className=" cursor-pointer">{t('selectAGame')}</option>
+        {isLoading
+          ? <option disabled className=" cursor-pointer">{t('loading')}</option>
+          : <>
+              {data?.map((data) => (<option key={data.id} value={data.id} className=" cursor-pointer">{data.name}</option>))}
+            </>
+        }
+      </select>
+      <ErrorMessageInput error={error?.message} />
+    </LabelInputContainer>
+  )
+})
+

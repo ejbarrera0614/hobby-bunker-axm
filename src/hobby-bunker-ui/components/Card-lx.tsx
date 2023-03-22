@@ -8,7 +8,7 @@ interface Props {
 export function Card ({ icon }: Props): JSX.Element {
   const Icon = useMemo(() => getIcon(icon), [icon])
   return (
-        <Link to={'/Quest'}
+        <Link to={'/quest'}
             className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 cursor-pointer md:max-w-lg hover:text-hover"
         >
             <div className="rounded shadow shadow-primary hover:shadow-hover px-8 py-6 flex items-center border-2">
@@ -18,8 +18,8 @@ export function Card ({ icon }: Props): JSX.Element {
                 <div className="ml-6">
                     <h3 className="mb-4  font-bold ">¿Quieres participar o crear un evento?</h3>
                     <p className="text-sm tracking-normal font-normal leading-5">
-                        Entonces ingresa a la sección de misiones y ver todo los eventos que tenemos y también
-                        puedes proponernos un evento llenando el formulario
+                        Entonces ingresa a la sección de misiones y podrás ver todos los eventos que tenemos y también
+                        puedes proponernos uno llenando el formulario
                     </p>
 
                 </div>
