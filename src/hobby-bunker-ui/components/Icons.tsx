@@ -1,5 +1,5 @@
 
-export const DiceSix = (props: any) =>
+export const DiceSix = (props: React.SVGProps<SVGSVGElement>): JSX.Element =>
     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dice-6" width="24" height="24"
         viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none"
         strokeLinecap="round" strokeLinejoin="round" {...props} >
@@ -13,12 +13,12 @@ export const DiceSix = (props: any) =>
         <circle cx="8.5" cy="16.5" r=".5" fill="currentColor"></circle>
     </svg>
 
-export const DiceSixFaces = (props: any) =>
+export const DiceSixFaces = (props: React.SVGProps<SVGSVGElement>): JSX.Element =>
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
         width="24" height="24"
-        stroke="currentColor" fill="none"  {...props} 
+        stroke="currentColor" fill="none" {...props}
     >
         <path
             fill="currentColor"
@@ -26,11 +26,11 @@ export const DiceSixFaces = (props: any) =>
         ></path>
     </svg>
 
-export const DiceSixFacesTwo = (props: any) =>
+export const DiceSixFacesTwo = (props: React.SVGProps<SVGSVGElement>): JSX.Element =>
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        width="24" height="24"  {...props} 
+        width="24" height="24" {...props}
     >
         <path
             fill="currentColor"
@@ -38,12 +38,11 @@ export const DiceSixFacesTwo = (props: any) =>
         ></path>
     </svg>
 
-
-export const DiceSixFacesThree = (props: any) =>
+export const DiceSixFacesThree = (props: React.SVGProps<SVGSVGElement>): JSX.Element =>
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        width="24" height="24"  {...props} 
+        width="24" height="24" {...props}
     >
         <path
             fill="currentColor"
@@ -51,7 +50,7 @@ export const DiceSixFacesThree = (props: any) =>
         ></path>
     </svg>
 
-export const QuestionMark = (props: any) =>
+export const QuestionMark = (props: React.SVGProps<SVGSVGElement>): JSX.Element =>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
         strokeLinecap="round" strokeLinejoin="round" className="feather feather-help-circle" {...props} >
         <circle cx="12" cy="12" r="10"></circle>
@@ -59,20 +58,36 @@ export const QuestionMark = (props: any) =>
         <line x1="12" y1="17" x2="12.01" y2="17"></line>
     </svg>
 
-export function getIcon(nameIcon: string): any {
-    return icons[nameIcon as keyof Object];
-}
-
 export const Icons = {
-    diceSix: () => DiceSix,
-    questionMark: () => QuestionMark,
+  default: QuestionMark,
+  diceSix: DiceSix,
+  questionMark: QuestionMark
 }
 
+const iconsObj = {
+  default: QuestionMark,
+  QuestionMark,
+  DiceSixFacesThree
+}
+export function getIcon (nameIcon: string = 'default'): React.FC<React.SVGProps<SVGSVGElement>> {
+  const component = iconsObj[nameIcon as keyof typeof iconsObj]
+  return component
+}
 
-const icons = {
-    DiceSix,
-    QuestionMark,
-    DiceSixFaces,
-    DiceSixFacesTwo,
-    DiceSixFacesThree
+interface IconsI {
+  name: string
+  icon: React.FC<React.SVGProps<SVGSVGElement>>
+}
+const icons: IconsI[] =
+  [
+    { name: 'QuestionMark', icon: QuestionMark },
+    { name: 'DiceSix', icon: DiceSix },
+    { name: 'DiceSixFaces', icon: DiceSixFaces },
+    { name: 'DiceSixFacesTwo', icon: DiceSixFacesTwo },
+    { name: 'DiceSixFacesThree', icon: DiceSixFacesThree }
+  ]
+
+export function getIconByName (name: string): React.FC<React.SVGProps<SVGSVGElement>> | undefined {
+  const component = icons.find((c) => c.name === name)
+  return (component != null) ? component.icon : QuestionMark
 }

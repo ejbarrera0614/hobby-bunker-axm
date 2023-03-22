@@ -1,34 +1,67 @@
-import { DiceSixFaces, DiceSixFacesTwo } from '@ui/components/Icons';
-import { NavLink } from "react-router-dom";
-
+import { DiceSixFaces, DiceSixFacesTwo } from '@ui/components/Icons'
+import { NavLink, useLocation } from 'react-router-dom'
+import { ROUTES } from '@/constants/menu'
+import { t } from '@/utils/translate'
 interface Link {
-    path: string;
-    label: string;
+  path: string
+  label: string
+  showDices?: boolean
+}
+interface LinksWithSubMenu {
+  path: string
+  label: string
+  subMenu?: Link[]
 }
 
-const LiDiceLink = ({ path, label }: Link) => (
-    <li className='hover:text-hover w-full bg-sky-500 text-ellipsis h-7'>
-        <NavLink to={path} className={({ isActive }) =>
-            `grid grid-cols-link h-full nav-link ${isActive ? 'active' : ''}`
-        }>
-            <span className='col-start-1 hidden'><DiceSixFaces /></span>
-            <h5 className='col-start-2 m-auto'>{label}</h5>
-            <span className='col-start-3 hidden'><DiceSixFacesTwo /></span>
-        </NavLink >
+const LinkWithDicesIcons = ({ path, label, showDices }: Link): JSX.Element => {
+  const dicesStyle = (showDices ?? false) ? '' : 'invisible'
+
+  return (
+    <NavLink to={path} className='hover:text-hover grid grid-cols-link h-full nav-link py-2'>
+        <span className={`col-start-1 m-auto ${dicesStyle}`}><DiceSixFaces /></span>
+        <h5 className='col-start-2 m-auto'>{label}</h5>
+        <span className={`col-start-3 m-auto ${dicesStyle}`}><DiceSixFacesTwo /></span>
+    </NavLink >)
+}
+
+const LinksContainer = ({ path, label, subMenu }: LinksWithSubMenu): JSX.Element => {
+  const { pathname } = useLocation()
+  const isLinsContainerActive: boolean = ((subMenu?.some(options => options.path === pathname)) ?? false) || pathname === path
+  const linkClassName = `h-fit w-full text-ellipsis rounded ${isLinsContainerActive ? 'active bg-primary' : 'hover:bg-primary'}`
+  const subMenuClassName = 'm-auto flex flex-col items-center rounded-b'
+
+  return (
+    <li className={`${linkClassName}`}>
+        <LinkWithDicesIcons path={path} label={label} showDices={pathname === path} />
+            {(subMenu != null && isLinsContainerActive)
+              ? <ul className={`border-t-2 ${subMenuClassName}`}>
+                    {Object.values(subMenu).map(item =>
+                        <li key={`sub-menu-${path}-${item.path}`} className='w-full'>
+                            <LinkWithDicesIcons path={item.path} label={item.label} showDices={pathname === item.path} />
+                        </li>)}
+                </ul>
+              : <></>}
     </li>
-)
-
-function Menu() {
-    return (
-        <nav className='mt-6'>
-            <ul className='flex flex-col items-center gap-6 max-w-fit m-auto menu'>
-                <LiDiceLink path='/' label='Inicio' />
-                <LiDiceLink path='/Home' label='Misiones' />
-                <LiDiceLink path='/Eventos' label='Eventos' />
-                <LiDiceLink path='/Login' label='¿Qué somos?' />
-            </ul>
-        </nav>
-    )
+  )
 }
 
-export default Menu
+export default function MenuContainer (): JSX.Element {
+  const subMenu: Link[] = [{
+    path: '/quest/add',
+    label: 'Agregar Misión'
+  }, {
+    path: '/quest/add2',
+    label: 'Sub Menu2'
+  }]
+
+  return (
+    <nav className='mt-6'>
+        <ul className='m-auto flex max-w-fit flex-col items-center gap-6'>
+            <LinksContainer path={ROUTES.home.path} label={t(ROUTES.home.label)} />
+            <LinksContainer path={ROUTES.quest.path} label={t(ROUTES.quest.label)} subMenu={subMenu}/>
+            <LinksContainer path={ROUTES.events.path} label={t(ROUTES.events.label)} />
+            <LinksContainer path={ROUTES.about.path} label={t(ROUTES.about.label)} />
+        </ul>
+    </nav>
+  )
+}

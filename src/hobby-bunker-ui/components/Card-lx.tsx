@@ -1,16 +1,16 @@
-import { NavLink } from 'react-router-dom';
-import { getIcon } from '@ui/components/Icons';
-import { useMemo } from 'react';
-
+import { Link } from 'react-router-dom'
+import { getIcon } from '@ui/components/Icons'
+import { useMemo } from 'react'
 
 interface Props {
-    icon: string
+  icon?: string
 }
-export function Card({ icon }: Props) {
-
-    const Icon = useMemo(() => getIcon(icon), [icon])
-    return (
-        <NavLink to={'/Quest'} className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 cursor-pointer md:max-w-lg hover:text-hover">
+export function Card ({ icon }: Props): JSX.Element {
+  const Icon = useMemo(() => getIcon(icon), [icon])
+  return (
+        <Link to={'/Quest'}
+            className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 cursor-pointer md:max-w-lg hover:text-hover"
+        >
             <div className="rounded shadow shadow-primary hover:shadow-hover px-8 py-6 flex items-center border-2">
                 <div className="rounded self-start">
                     <Icon className='w-11 h-auto' />
@@ -24,6 +24,6 @@ export function Card({ icon }: Props) {
 
                 </div>
             </div>
-        </NavLink >
-    )
+        </Link >
+  )
 }
