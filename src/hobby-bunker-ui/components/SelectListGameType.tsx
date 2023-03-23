@@ -10,7 +10,7 @@ export const SelectListGameType = forwardRef<HTMLSelectElement, ISelectGameType>
 
   return (
     <LabelInputContainer label={label ?? ''}>
-      <select name={name} defaultValue='' ref={ref} onChange={onChange} className={` ${className} bg-transparent  rounded border-2 w-full max-w-xs p-2 focus:outline-none cursor-pointer `} >
+      <select name={name} defaultValue='' ref={ref} onChange={onChange} className={`bg-transparent  rounded border-2 w-full  p-2 focus:outline-none cursor-pointer ${className} `} >
         <option disabled value={''}  className=" cursor-pointer">{t('selectAGame')}</option>
         {isLoading
           ? <option disabled className=" cursor-pointer">{t('loading')}</option>

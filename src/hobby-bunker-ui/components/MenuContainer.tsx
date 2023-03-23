@@ -1,28 +1,8 @@
-import { DiceSixFaces, DiceSixFacesTwo } from '@ui/components/Icons'
-import { NavLink, useLocation } from 'react-router-dom'
+import {  useLocation } from 'react-router-dom'
 import { ROUTES } from '@/constants/menu'
 import { t } from '@/utils/translate'
-interface Link {
-  path: string
-  label: string
-  showDices?: boolean
-}
-interface LinksWithSubMenu {
-  path: string
-  label: string
-  subMenu?: Link[]
-}
-
-const LinkWithDicesIcons = ({ path, label, showDices }: Link): JSX.Element => {
-  const dicesStyle = (showDices ?? false) ? '' : 'invisible'
-
-  return (
-    <NavLink to={path} className='hover:text-hover grid grid-cols-link h-full nav-link py-2'>
-        <span className={`col-start-1 m-auto ${dicesStyle}`}><DiceSixFaces /></span>
-        <h5 className='col-start-2 m-auto'>{label}</h5>
-        <span className={`col-start-3 m-auto ${dicesStyle}`}><DiceSixFacesTwo /></span>
-    </NavLink >)
-}
+import { LinkWithDicesIcons } from './LinkWithDicesIcons'
+import { Link, LinksWithSubMenu } from '@/interface/Links'
 
 const LinksContainer = ({ path, label, subMenu }: LinksWithSubMenu): JSX.Element => {
   const { pathname } = useLocation()
@@ -56,7 +36,7 @@ export function MenuContainer (): JSX.Element {
 
   return (
     <nav className='mt-6'>
-        <ul className='m-auto flex max-w-fit flex-col items-center gap-6'>
+        <ul className='m-auto flex max-w-fit min-w-menu-container flex-col items-center gap-6'>
             <LinksContainer path={ROUTES.home.path} label={t(ROUTES.home.label)} />
             <LinksContainer path={ROUTES.quest.path} label={t(ROUTES.quest.label)} subMenu={subMenu}/>
             <LinksContainer path={ROUTES.events.path} label={t(ROUTES.events.label)} />

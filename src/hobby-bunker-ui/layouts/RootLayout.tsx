@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import {MenuContainer} from '@ui/components/Menu'
 import {Header} from '@ui/components/Header'
+import { MenuContainer } from '@ui/components/MenuContainer'
 export function RootLayout (): JSX.Element {
   useEffect(() => {
     document.title = 'Home Page'

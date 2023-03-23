@@ -24,6 +24,9 @@ module.exports = {
     },
     gridTemplateColumns: {
       link: 'minmax(10px, 40px) auto minmax(10px, 40px)'
+    },
+    minWidth:{
+      'menu-container': '13rem'
     }
   },
   plugins: []
