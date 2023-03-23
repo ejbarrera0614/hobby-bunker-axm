@@ -4,9 +4,12 @@ import { ISelectGameType } from '@/interface/IInputs'
 import { t } from '@/utils/translate'
 import {  forwardRef  } from 'react'
 import { ErrorMessageInput } from './ErrorMessageInput'
-
+import { IDataUseGetData } from '@/interface/Games'
+interface GetData extends IDataUseGetData {
+  isLoading: boolean
+}
 export const SelectListGameType = forwardRef<HTMLSelectElement, ISelectGameType>(function SelectListGameType({name, label, className, error, onChange}, ref){
-    const { data, isLoading } = useGetData()
+    const { data, isLoading }: GetData = useGetData()
 
   return (
     <LabelInputContainer label={label ?? ''}>

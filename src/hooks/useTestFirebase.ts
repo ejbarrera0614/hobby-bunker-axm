@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import FirebaseDB from '@/firebase/index'
 import { collection, getDocs } from 'firebase/firestore/lite'
-import { IDataGames, IDataUseGetData } from '@/interface/Games'
 import { isDevelopment } from '@/utils/isDevelopment'
+import { type IDataGames, type IDataUseGetData } from '@/interface/Games'
 
 export const useGetData = (): IDataUseGetData => {
   const [data, setData] = useState<IDataUseGetData>({
