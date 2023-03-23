@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { DiceSixFaces, DiceSixFacesTwo } from '@ui/components/Icons'
-import { Link } from '@/interface/Links'
+import { Link } from '@/interface/ILinks'
 
 export  function LinkWithDicesIcons({ path, label, showDices }: Link): JSX.Element  {
     const dicesStyle = (showDices ?? false) ? '' : 'invisible'

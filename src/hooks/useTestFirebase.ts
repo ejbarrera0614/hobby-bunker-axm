@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import FirebaseDB from '@/firebase/index'
 import { collection, getDocs } from 'firebase/firestore/lite'
 import { isDevelopment } from '@/utils/isDevelopment'
-import { type IDataGames, type IDataUseGetData } from '@/interface/Games'
+import { IDataGames, IDataUseGetData } from '@/interface/IGames'
 
 export const useGetData = (): IDataUseGetData => {
   const [data, setData] = useState<IDataUseGetData>({
@@ -13,7 +13,7 @@ export const useGetData = (): IDataUseGetData => {
   const isMounted = useRef(true)
   const getData = useCallback(
     async () => {
-      setData(prevState => ({ ...prevState, isLoading: true }))
+      setData((prevState: IDataUseGetData) => ({ ...prevState, isLoading: true }))
       try {
         const collectionRef = collection(FirebaseDB, 'games')
         const docs = await getDocs(collectionRef)

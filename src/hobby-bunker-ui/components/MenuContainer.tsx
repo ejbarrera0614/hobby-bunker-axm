@@ -2,7 +2,7 @@ import {  useLocation } from 'react-router-dom'
 import { ROUTES } from '@/constants/menu'
 import { t } from '@/utils/translate'
 import { LinkWithDicesIcons } from './LinkWithDicesIcons'
-import { Link, LinksWithSubMenu } from '@/interface/Links'
+import { Link, LinksWithSubMenu } from '@/interface/ILinks'
 
 const LinksContainer = ({ path, label, subMenu }: LinksWithSubMenu): JSX.Element => {
   const { pathname } = useLocation()
