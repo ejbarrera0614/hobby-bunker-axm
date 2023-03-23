@@ -22,6 +22,6 @@
       "@ui/*": ["./src/hobby-bunker-ui/*"]
     }
   },
-  "include": ["src", "vite.config.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "vite.config.ts"]/* ,
+  "references": [{ "path": "./tsconfig.node.json" }] */
 }
