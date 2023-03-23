@@ -20,7 +20,8 @@ function Router (): JSX.Element {
         { path: ROUTES.quest.subMenu?.questAdd.path, element: <QuestAddPage /> },
       ],
       errorElement:<ErrorPage />
-    }
+    }, 
+    {path: '*', element:<ErrorPage />}
   ])
   return (
         <Suspense fallback={<h6>Loading...</h6>}>
